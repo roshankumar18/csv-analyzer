@@ -13,6 +13,15 @@
 
 2. Install dependencies:
 
+   ```bash
+   npm install
+   ```
+
 3. Copy the environment example file and configure your settings
 
 4. Configure your environment variables in `.env`:
+
+5. Start the development server:
+   ```bash
+   npm run dev
+   ```
