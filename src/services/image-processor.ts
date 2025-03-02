@@ -1,7 +1,7 @@
 import { ObjectId } from "mongodb";
 import path from "path";
-import { Product } from "src/models/product";
-import { Request } from "src/models/request";
+import { Product } from "@models/product";
+import { Request } from "@models/request";
 import fs from "fs";
 import { v4 as uuidv4 } from "uuid";
 import sharp from "sharp";

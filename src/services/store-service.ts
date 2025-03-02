@@ -1,6 +1,6 @@
-import { Request } from "src/models/request";
+import { Request } from "@models/request";
 import { Result } from "./type";
-import { Product } from "src/models/product";
+import { Product } from "@models/product";
 import { v4 } from "uuid";
 
 export class StoreService {
