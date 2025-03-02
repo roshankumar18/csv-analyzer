@@ -110,7 +110,7 @@ export class ImageProcessor {
       });
 
       const headers = [
-        "S. No",
+        "S. No.",
         "Product Name",
         "Input Image Urls",
         "Output Image Urls",

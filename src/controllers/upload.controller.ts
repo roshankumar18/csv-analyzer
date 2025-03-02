@@ -15,9 +15,16 @@ export async function uploadController(
         error: "No file uploaded",
       });
     }
+    if (req.body.webhookUrl) {
+      if (!req.body.webhookUrl.startsWith("https://")) {
+        return res.status(400).json({
+          error: "Invalid webhook URL",
+        });
+      }
+    }
+
     const results = await CsvValidator.validateFile(req.file.buffer);
     const requestId = await StoreService.getRequestId(req.body.webhookUrl);
-
     await StoreService.storeParsedData(requestId._id.toString(), results);
     await ImageProcessor.processRequest(requestId._id.toString());
 
