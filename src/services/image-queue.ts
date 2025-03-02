@@ -6,6 +6,8 @@ import { Product } from "../models/product";
 const connection = {
   host: process.env.REDIS_HOST || "localhost",
   port: parseInt(process.env.REDIS_PORT || "6379"),
+  username: "default",
+  password: process.env.REDIS_PASSWORD,
 };
 
 const CONCURRENT_JOBS = cpus().length * 2;
