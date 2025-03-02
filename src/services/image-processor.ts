@@ -53,6 +53,7 @@ export class ImageProcessor {
       await sharp(buffer).jpeg({ quality: 50 }).toFile(outputPath);
 
       await BlobService.uploadFile(outputPath, filename);
+      await fs.promises.unlink(outputPath);
       return `${process.env.SUPABASE_URL}/storage/v1/object/public/${process.env.BUCKET_NAME}//${filename}`;
     } catch (error: any) {
       console.error("Error processing image:", error);
@@ -121,6 +122,7 @@ export class ImageProcessor {
 
       await fs.promises.writeFile(outputPath, csv);
       await BlobService.uploadFile(outputPath, fileName);
+      fs.promises.unlink(outputPath);
       return `${process.env.SUPABASE_URL}/storage/v1/object/public/${process.env.BUCKET_NAME}//${fileName}`;
     } catch (error) {
       console.error("Error generating output csv:", error);
