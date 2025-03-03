@@ -37,8 +37,11 @@ export class StoreService {
     );
   }
   static async getStatus(requestId: string) {
+    if (!/^[0-9a-fA-F]{24}$/.test(requestId)) {
+      throw new Error("Invalid requestId");
+    }
     const request = await Request.findOne({ _id: requestId });
-    if (!request) return null;
+    if (!request) throw new Error("Request not found");
     return {
       requestId: request._id,
       status: request.status,
